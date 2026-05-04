@@ -2,7 +2,7 @@
 
 ## 📋 Descripción
 
-Esta aplicación web interactiva está diseñada para estudiantes de primaria y presenta problemas de razonamiento algebraico basados en el documento PDF proporcionado. La web incluye tres tipos principales de problemas matemáticos con figuras interactivas y retroalimentación inmediata.
+Esta aplicación web interactiva está diseñada para estudiantes de primaria y presenta problemas de razonamiento algebraico. La web incluye tres tipos principales de problemas matemáticos con figuras interactivas y retroalimentación inmediata.
 
 ## 🎯 Problemas Incluidos
 
@@ -203,4 +203,4 @@ Este proyecto está diseñado para uso educativo libre. Se permite la modificaci
 
 ---
 
-**Desarrollado para el aprendizaje interactivo de matemáticas en primaria** 🎓✨
+**Desarrollado Leyver Ortiz (ENELC), Algebra su aprendizaje y su enseñanza** 🎓✨

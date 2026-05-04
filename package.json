@@ -1,0 +1,86 @@
+{
+  "name": "problemas-razonamiento-algebraico",
+  "version": "1.0.0",
+  "description": "Aplicación web interactiva para problemas de razonamiento algebraico en educación primaria",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "python -m http.server 8000",
+    "test": "open test.html",
+    "build": "echo 'No build process needed - static files'",
+    "deploy": "echo 'Ready for deployment'",
+    "lint": "echo 'Linting not configured yet'",
+    "format": "echo 'Formatting not configured yet'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usuario/problemas-razonamiento-algebraico.git"
+  },
+  "keywords": [
+    "educacion",
+    "matematicas",
+    "primaria",
+    "razonamiento-algebraico",
+    "geometria",
+    "patrones",
+    "ecuaciones",
+    "interactivo",
+    "javascript",
+    "html5",
+    "css3",
+    "svg",
+    "responsive",
+    "accesibilidad"
+  ],
+  "author": "Sistema Educativo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/usuario/problemas-razonamiento-algebraico/issues"
+  },
+  "homepage": "https://github.com/usuario/problemas-razonamiento-algebraico#readme",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "devDependencies": {},
+  "dependencies": {},
+  "files": [
+    "index.html",
+    "styles.css",
+    "script.js",
+    "config.js",
+    "test.html",
+    "README.md",
+    "LICENSE",
+    "CONTRIBUTING.md",
+    "INSTALACION.md",
+    "problemas-adicionales.md"
+  ],
+  "config": {
+    "port": 8000,
+    "host": "localhost"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/usuario"
+  },
+  "contributors": [
+    {
+      "name": "Sistema Educativo",
+      "email": "educacion@ejemplo.com",
+      "url": "https://github.com/usuario"
+    }
+  ],
+  "maintainers": [
+    {
+      "name": "Sistema Educativo",
+      "email": "educacion@ejemplo.com",
+      "url": "https://github.com/usuario"
+    }
+  ]
+}

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pruebas - Problemas de Razonamiento Algebraico</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .pass { background: #d5f4e6; color: #27ae60; }
+        .fail { background: #fdeaea; color: #e74c3c; }
+        .info { background: #e8f4fd; color: #3498db; }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #2980b9; }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .demo-frame {
+            width: 100%;
+            height: 400px;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+<h1>🧪 Pruebas de la Aplicación Web</h1>
+<p>Esta página permite probar y verificar el funcionamiento de la aplicación de problemas de razonamiento algebraico.</p>
+<!-- Sección de pruebas de archivos -->
+<div class="test-section">
+<h2>📁 Verificación de Archivos</h2>
+<button onclick="testFiles()">Verificar Archivos</button>
+<div id="file-results"></div>
+</div>
+<!-- Sección de pruebas de configuración -->
+<div class="test-section">
+<h2>⚙️ Pruebas de Configuración</h2>
+<button onclick="testConfig()">Probar Configuración</button>
+<div id="config-results"></div>
+</div>
+<!-- Sección de pruebas de funciones -->
+<div class="test-section">
+<h2>🔧 Pruebas de Funciones</h2>
+<button onclick="testFunctions()">Probar Funciones JavaScript</button>
+<div id="function-results"></div>
+</div>
+<!-- Sección de pruebas de responsividad -->
+<div class="test-section">
+<h2>📱 Pruebas de Responsividad</h2>
+<button onclick="testResponsive()">Probar Diseño Responsivo</button>
+<div id="responsive-results"></div>
+</div>
+<!-- Demo en vivo -->
+<div class="test-section">
+<h2>🎮 Demo en Vivo</h2>
+<button onclick="loadDemo()">Cargar Aplicación</button>
+<iframe class="demo-frame" id="demo-frame" style="display:none;"></iframe>
+</div>
+<!-- Información del sistema -->
+<div class="test-section">
+<h2>💻 Información del Sistema</h2>
+<button onclick="showSystemInfo()">Mostrar Info del Sistema</button>
+<div id="system-info"></div>
+</div>
+<script src="config.js"></script>
+<script>
+        // Resultados de pruebas
+        let testResults = {
+            files: [],
+            config: [],
+            functions: [],
+            responsive: [],
+            system: []
+        };
+
+        // Función para mostrar resultados
+        function showResult(containerId, message, type = 'info') {
+            const container = document.getElementById(containerId);
+            const div = document.createElement('div');
+            div.className = `test-result ${type}`;
+            div.innerHTML = message;
+            container.appendChild(div);
+        }
+
+        // Limpiar resultados
+        function clearResults(containerId) {
+            document.getElementById(containerId).innerHTML = '';
+        }
+
+        // Prueba de archivos
+        async function testFiles() {
+            clearResults('file-results');
+            showResult('file-results', '🔍 Verificando archivos...', 'info');
+
+            const files = [
+                'index.html',
+                'styles.css', 
+                'script.js',
+                'config.js',
+                'README.md',
+                'problemas-adicionales.md'
+            ];
+
+            for (const file of files) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        const size = response.headers.get('content-length') || 'Desconocido';
+                        showResult('file-results', `✅ ${file} - Tamaño: ${size} bytes`, 'pass');
+                        testResults.files.push({file, status: 'ok', size});
+                    } else {
+                        showResult('file-results', `❌ ${file} - Error: ${response.status}`, 'fail');
+                        testResults.files.push({file, status: 'error', error: response.status});
+                    }
+                } catch (error) {
+                    showResult('file-results', `❌ ${file} - Error: ${error.message}`, 'fail');
+                    testResults.files.push({file, status: 'error', error: error.message});
+                }
+            }
+        }
+
+        // Prueba de configuración
+        function testConfig() {
+            clearResults('config-results');
+            showResult('config-results', '⚙️ Probando configuración...', 'info');
+
+            try {
+                // Verificar que CONFIG existe
+                if (typeof CONFIG !== 'undefined') {
+                    showResult('config-results', '✅ Objeto CONFIG cargado correctamente', 'pass');
+                } else {
+                    showResult('config-results', '❌ Objeto CONFIG no encontrado', 'fail');
+                    return;
+                }
+
+                // Verificar ConfigManager
+                if (typeof ConfigManager !== 'undefined') {
+                    showResult('config-results', '✅ ConfigManager disponible', 'pass');
+                } else {
+                    showResult('config-results', '❌ ConfigManager no encontrado', 'fail');
+                }
+
+                // Probar funciones de configuración
+                const testValue = ConfigManager.get('app.name');
+                if (testValue) {
+                    showResult('config-results', `✅ ConfigManager.get() funciona: "${testValue}"`, 'pass');
+                } else {
+                    showResult('config-results', '❌ ConfigManager.get() no funciona', 'fail');
+                }
+
+                // Probar presets
+                if (typeof PRESETS !== 'undefined') {
+                    const presetCount = Object.keys(PRESETS).length;
+                    showResult('config-results', `✅ ${presetCount} presets disponibles: ${Object.keys(PRESETS).join(', ')}`, 'pass');
+                } else {
+                    showResult('config-results', '❌ PRESETS no encontrado', 'fail');
+                }
+
+                testResults.config.push({status: 'completed', timestamp: new Date()});
+
+            } catch (error) {
+                showResult('config-results', `❌ Error en configuración: ${error.message}`, 'fail');
+                testResults.config.push({status: 'error', error: error.message});
+            }
+        }
+
+        // Prueba de funciones
+        function testFunctions() {
+            clearResults('function-results');
+            showResult('function-results', '🔧 Probando funciones JavaScript...', 'info');
+
+            // Lista de funciones que deberían existir
+            const expectedFunctions = [
+                'checkAnswer',
+                'checkMultipleAngles', 
+                'checkPatternTable',
+                'animatePattern',
+                'generateNextFigure',
+                'checkStep'
+            ];
+
+            // Simular carga del script principal
+            const script = document.createElement('script');
+            script.src = 'script.js';
+            script.onload = function() {
+                expectedFunctions.forEach(funcName => {
+                    if (typeof window[funcName] === 'function') {
+                        showResult('function-results', `✅ Función ${funcName}() disponible`, 'pass');
+                    } else {
+                        showResult('function-results', `❌ Función ${funcName}() no encontrada`, 'fail');
+                    }
+                });
+            };
+            script.onerror = function() {
+                showResult('function-results', '❌ Error al cargar script.js', 'fail');
+            };
+            document.head.appendChild(script);
+        }
+
+        // Prueba de responsividad
+        function testResponsive() {
+            clearResults('responsive-results');
+            showResult('responsive-results', '📱 Probando diseño responsivo...', 'info');
+
+            const breakpoints = [
+                {name: 'Móvil', width: 480},
+                {name: 'Tablet', width: 768},
+                {name: 'Desktop', width: 1200}
+            ];
+
+            breakpoints.forEach(bp => {
+                // Simular diferentes tamaños de pantalla
+                const mediaQuery = window.matchMedia(`(max-width: ${bp.width}px)`);
+                const status = mediaQuery.matches ? 'Activo' : 'Inactivo';
+                showResult('responsive-results', `📐 ${bp.name} (${bp.width}px): ${status}`, 'info');
+            });
+
+            // Verificar viewport meta tag
+            const viewport = document.querySelector('meta[name="viewport"]');
+            if (viewport) {
+                showResult('responsive-results', '✅ Meta viewport configurado correctamente', 'pass');
+            } else {
+                showResult('responsive-results', '❌ Meta viewport no encontrado', 'fail');
+            }
+
+            testResults.responsive.push({
+                timestamp: new Date(),
+                screenWidth: window.screen.width,
+                screenHeight: window.screen.height,
+                windowWidth: window.innerWidth,
+                windowHeight: window.innerHeight
+            });
+        }
+
+        // Cargar demo
+        function loadDemo() {
+            const frame = document.getElementById('demo-frame');
+            frame.src = 'index.html';
+            frame.style.display = 'block';
+            showResult('responsive-results', '🎮 Demo cargado en iframe', 'info');
+        }
+
+        // Información del sistema
+        function showSystemInfo() {
+            clearResults('system-info');
+            
+            const info = {
+                'Navegador': navigator.userAgent,
+                'Idioma': navigator.language,
+                'Plataforma': navigator.platform,
+                'Resolución': `${screen.width}x${screen.height}`,
+                'Ventana': `${window.innerWidth}x${window.innerHeight}`,
+                'Zona horaria': Intl.DateTimeFormat().resolvedOptions().timeZone,
+                'Fecha/Hora': new Date().toLocaleString(),
+                'Soporte JavaScript': 'Habilitado',
+                'Soporte LocalStorage': typeof(Storage) !== "undefined" ? 'Sí' : 'No',
+                'Soporte SVG': document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1") ? 'Sí' : 'No'
+            };
+
+            let infoHTML = '<pre>';
+            Object.entries(info).forEach(([key, value]) => {
+                infoHTML += `${key}: ${value}\n`;
+            });
+            infoHTML += '</pre>';
+
+            document.getElementById('system-info').innerHTML = infoHTML;
+            
+            testResults.system.push({
+                timestamp: new Date(),
+                info: info
+            });
+        }
+
+        // Ejecutar pruebas automáticas al cargar
+        window.addEventListener('load', function() {
+            console.log('🧪 Página de pruebas cargada');
+            console.log('📊 Ejecuta las pruebas usando los botones de arriba');
+        });
+
+        // Función para exportar resultados de pruebas
+        function exportTestResults() {
+            const results = {
+                timestamp: new Date(),
+                results: testResults,
+                summary: {
+                    totalTests: Object.values(testResults).flat().length,
+                    browser: navigator.userAgent,
+                    url: window.location.href
+                }
+            };
+            
+            const dataStr = JSON.stringify(results, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'test-results.json';
+            link.click();
+        }
+
+        // Agregar botón de exportación
+        document.addEventListener('DOMContentLoaded', function() {
+            const exportBtn = document.createElement('button');
+            exportBtn.textContent = '📥 Exportar Resultados';
+            exportBtn.onclick = exportTestResults;
+            exportBtn.style.position = 'fixed';
+            exportBtn.style.bottom = '20px';
+            exportBtn.style.right = '20px';
+            exportBtn.style.zIndex = '1000';
+            document.body.appendChild(exportBtn);
+        });
+    </script>
+</body>
+</html>

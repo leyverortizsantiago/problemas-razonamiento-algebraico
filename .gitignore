@@ -1,0 +1,55 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Archivos temporales
+*.tmp
+*.temp
+*.log
+
+# Archivos de backup
+*.bak
+*.backup
+
+# Node modules (si se añaden en el futuro)
+node_modules/
+npm-debug.log*
+
+# Archivos de distribución
+dist/
+build/
+
+# Archivos de configuración local
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos de cache
+.cache/
+.parcel-cache/
+
+# Archivos de testing
+coverage/
+.nyc_output/
+
+# Archivos de sistema Windows
+ehthumbs.db
+Desktop.ini
+
+# Archivos de sistema macOS
+.AppleDouble
+.LSOverride
+Icon?
+
+# Archivos de sistema Linux
+*~
+.nfs*

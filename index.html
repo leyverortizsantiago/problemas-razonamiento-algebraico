@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Problemas de Razonamiento Algebraico - Primaria</title>
+<link href="styles.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&amp;family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+<script src="config.js"></script>
+</head>
+<body>
+<header class="header">
+<div class="container">
+<h1><i class="fas fa-calculator"></i> Problemas de Razonamiento Algebraico</h1>
+<p class="subtitle">Ejercicios interactivos para estudiantes de primaria</p>
+</div>
+</header>
+<nav class="navigation">
+<div class="container">
+<ul class="nav-list">
+<li><a class="nav-link active" data-problem="1" href="#problema1">
+<i class="fas fa-shapes"></i> Ángulos
+                </a></li>
+<li><a class="nav-link" data-problem="2" href="#problema2">
+<i class="fas fa-chart-line"></i> Patrones
+                </a></li>
+<li><a class="nav-link" data-problem="3" href="#problema3">
+<i class="fas fa-balance-scale"></i> Balanzas
+                </a></li>
+</ul>
+</div>
+</nav>
+<main class="main-content">
+<div class="container">
+<!-- Problema 1: Ángulos en triángulos -->
+<section class="problem-section active" id="problema1">
+<div class="problem-header">
+<h2><i class="fas fa-shapes"></i> Problema 1: Ángulos en Triángulos</h2>
+<p class="problem-description">
+                        Encuentra los ángulos faltantes en las siguientes figuras geométricas.
+                    </p>
+</div>
+<div class="problem-grid">
+<!-- Subproblema 1A: Triángulo simple -->
+<div class="subproblem">
+<h3>1A. Triángulo con dos ángulos conocidos</h3>
+<div class="figure-container">
+<svg height="200" id="triangle1" viewbox="0 0 300 200" width="300">
+<!-- Triángulo -->
+<polygon fill="rgba(52, 152, 219, 0.3)" points="150,30 50,150 250,150" stroke="#3498db" stroke-width="3"></polygon>
+<!-- Ángulos conocidos -->
+<text class="angle-text" x="60" y="140">A = 64°</text>
+<text class="angle-text" x="240" y="140">B = 37°</text>
+<text class="angle-text unknown" x="140" y="50">C = ?</text>
+<!-- Arcos de ángulos -->
+<path d="M 70,150 A 20,20 0 0,0 85,135" fill="none" stroke="#e74c3c" stroke-width="2"></path>
+<path d="M 230,150 A 20,20 0 0,1 215,135" fill="none" stroke="#e74c3c" stroke-width="2"></path>
+<path d="M 140,50 A 20,20 0 0,0 160,60" fill="none" stroke="#27ae60" stroke-width="2"></path>
+</svg>
+</div>
+<div class="answer-section">
+<label for="answer1a">Respuesta:</label>
+<input id="answer1a" placeholder="Ingresa el ángulo C" type="number"/>
+<span class="unit">°</span>
+<button class="check-btn" onclick="checkAnswer('1a', 79)">
+<i class="fas fa-check"></i> Verificar
+                            </button>
+<div class="feedback" id="feedback1a"></div>
+</div>
+</div>
+<!-- Subproblema 1B: Figuras múltiples -->
+<div class="subproblem">
+<h3>1B. Ángulos en diferentes polígonos</h3>
+<div class="figure-container multi-figures">
+<!-- Triángulo con 70° -->
+<div class="figure-item">
+<svg height="120" viewbox="0 0 150 120" width="150">
+<polygon fill="rgba(231, 76, 60, 0.3)" points="75,20 25,100 125,100" stroke="#e74c3c" stroke-width="2"></polygon>
+<text class="angle-text" x="65" y="35">70°</text>
+<text class="angle-text unknown" x="15" y="115">?</text>
+<text class="angle-text unknown" x="115" y="115">?</text>
+</svg>
+<p>Triángulo isósceles</p>
+<input id="triangle-angle1" placeholder="Ángulo 1" type="number"/>°
+                                <input id="triangle-angle2" placeholder="Ángulo 2" type="number"/>°
+                            </div>
+<!-- Trapecio con 120° -->
+<div class="figure-item">
+<svg height="120" viewbox="0 0 150 120" width="150">
+<polygon fill="rgba(155, 89, 182, 0.3)" points="30,30 120,30 140,100 10,100" stroke="#9b59b6" stroke-width="2"></polygon>
+<text class="angle-text" x="20" y="25">120°</text>
+<text class="angle-text unknown" x="110" y="25">?</text>
+<text class="angle-text unknown" x="130" y="115">?</text>
+<text class="angle-text unknown" x="5" y="115">?</text>
+</svg>
+<p>Trapecio</p>
+<input id="trapezoid-angle1" placeholder="Ángulo 1" type="number"/>°
+                                <input id="trapezoid-angle2" placeholder="Ángulo 2" type="number"/>°
+                            </div>
+</div>
+<button class="check-btn" onclick="checkMultipleAngles()">
+<i class="fas fa-check"></i> Verificar Todos
+                        </button>
+<div class="feedback" id="feedback1b"></div>
+</div>
+<!-- Subproblema 1C: Hexágono regular -->
+<div class="subproblem">
+<h3>1C. Ángulos en hexágono regular</h3>
+<div class="figure-container">
+<svg height="250" id="hexagon-mosaic" viewbox="0 0 300 250" width="300">
+<!-- Hexágono central (destacado) -->
+<polygon fill="#f39c12" id="center-hex" points="150,50 185,75 185,125 150,150 115,125 115,75" stroke="#e67e22" stroke-width="3"></polygon>
+<!-- Hexágonos circundantes -->
+<polygon fill="rgba(52, 152, 219, 0.3)" points="150,50 185,75 220,50 220,0 185,25 150,0" stroke="#3498db" stroke-width="2"></polygon>
+<polygon fill="rgba(52, 152, 219, 0.3)" points="185,75 220,100 220,150 185,125 150,150 150,100" stroke="#3498db" stroke-width="2"></polygon>
+<polygon fill="rgba(52, 152, 219, 0.3)" points="115,125 150,150 115,175 80,150 80,100 115,75" stroke="#3498db" stroke-width="2"></polygon>
+<polygon fill="rgba(52, 152, 219, 0.3)" points="115,75 150,50 150,0 115,25 80,50 80,100" stroke="#3498db" stroke-width="2"></polygon>
+<!-- Líneas para mostrar ángulos internos -->
+<line stroke="#e74c3c" stroke-dasharray="5,5" stroke-width="2" x1="150" x2="185" y1="100" y2="75"></line>
+<line stroke="#e74c3c" stroke-dasharray="5,5" stroke-width="2" x1="150" x2="185" y1="100" y2="125"></line>
+<text class="angle-text unknown" x="190" y="105">?°</text>
+</svg>
+</div>
+<div class="answer-section">
+<p class="hint">
+<i class="fas fa-lightbulb"></i>
+<strong>Pista:</strong> Un hexágono regular tiene 6 lados iguales y 6 ángulos iguales.
+                                La suma de ángulos internos de un polígono es (n-2) × 180°
+                            </p>
+<label for="answer1c">Ángulo interno del hexágono:</label>
+<input id="answer1c" placeholder="Ingresa el ángulo" type="number"/>
+<span class="unit">°</span>
+<button class="check-btn" onclick="checkAnswer('1c', 120)">
+<i class="fas fa-check"></i> Verificar
+                            </button>
+<div class="feedback" id="feedback1c"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Problema 2: Patrones con palillos -->
+<section class="problem-section" id="problema2">
+<div class="problem-header">
+<h2><i class="fas fa-chart-line"></i> Problema 2: Patrones con Palillos</h2>
+<p class="problem-description">
+                        Observa la secuencia de figuras hechas con palillos y completa la tabla.
+                    </p>
+</div>
+<div class="pattern-visualization">
+<div class="pattern-figures">
+<div class="figure-step" data-step="1">
+<h4>Figura 1</h4>
+<svg height="100" viewbox="0 0 100 100" width="100">
+<!-- Triángulo simple -->
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="50" x2="20" y1="20" y2="70"></line>
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="20" x2="80" y1="70" y2="70"></line>
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="80" x2="50" y1="70" y2="20"></line>
+<!-- Puntos de conexión -->
+<circle cx="50" cy="20" fill="#e74c3c" r="3"></circle>
+<circle cx="20" cy="70" fill="#e74c3c" r="3"></circle>
+<circle cx="80" cy="70" fill="#e74c3c" r="3"></circle>
+</svg>
+<p>1 triángulo</p>
+</div>
+<div class="figure-step" data-step="2">
+<h4>Figura 2</h4>
+<svg height="100" viewbox="0 0 120 100" width="120">
+<!-- Rombo (2 triángulos) -->
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="60" x2="30" y1="20" y2="50"></line>
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="30" x2="60" y1="50" y2="80"></line>
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="60" x2="90" y1="80" y2="50"></line>
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="90" x2="60" y1="50" y2="20"></line>
+<!-- Línea divisoria -->
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="30" x2="90" y1="50" y2="50"></line>
+<!-- Puntos de conexión -->
+<circle cx="60" cy="20" fill="#e74c3c" r="3"></circle>
+<circle cx="30" cy="50" fill="#e74c3c" r="3"></circle>
+<circle cx="60" cy="80" fill="#e74c3c" r="3"></circle>
+<circle cx="90" cy="50" fill="#e74c3c" r="3"></circle>
+</svg>
+<p>2 triángulos</p>
+</div>
+<div class="figure-step" data-step="3">
+<h4>Figura 3</h4>
+<svg height="100" viewbox="0 0 140 100" width="140">
+<!-- 3 triángulos conectados -->
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="70" x2="40" y1="20" y2="60"></line>
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="40" x2="100" y1="60" y2="60"></line>
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="100" x2="70" y1="60" y2="20"></line>
+<!-- Triángulo izquierdo adicional -->
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="40" x2="10" y1="60" y2="80"></line>
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="10" x2="70" y1="80" y2="80"></line>
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="70" x2="40" y1="80" y2="60"></line>
+<!-- Triángulo derecho adicional -->
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="100" x2="130" y1="60" y2="80"></line>
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="130" x2="70" y1="80" y2="80"></line>
+<line stroke="#8e44ad" stroke-linecap="round" stroke-width="4" x1="70" x2="100" y1="80" y2="60"></line>
+<!-- Puntos de conexión -->
+<circle cx="70" cy="20" fill="#e74c3c" r="3"></circle>
+<circle cx="40" cy="60" fill="#e74c3c" r="3"></circle>
+<circle cx="100" cy="60" fill="#e74c3c" r="3"></circle>
+<circle cx="10" cy="80" fill="#e74c3c" r="3"></circle>
+<circle cx="70" cy="80" fill="#e74c3c" r="3"></circle>
+<circle cx="130" cy="80" fill="#e74c3c" r="3"></circle>
+</svg>
+<p>3 triángulos</p>
+</div>
+</div>
+<div class="pattern-controls">
+<button class="animate-btn" onclick="animatePattern()">
+<i class="fas fa-play"></i> Animar Secuencia
+                        </button>
+<button class="generate-btn" onclick="generateNextFigure()">
+<i class="fas fa-forward"></i> Siguiente Figura
+                        </button>
+</div>
+</div>
+<div class="data-table-container">
+<h3>Completa la tabla observando el patrón:</h3>
+<table class="pattern-table" id="patternTable">
+<thead>
+<tr>
+<th>Figura</th>
+<th>Nº de triángulos</th>
+<th>Nº de palillos</th>
+<th>Nº de bolas (vértices)</th>
+</tr>
+</thead>
+<tbody>
+<tr data-figure="1">
+<td>1</td>
+<td><span class="auto-fill">1</span></td>
+<td><input class="table-input" data-answer="3" placeholder="?" type="number"/></td>
+<td><input class="table-input" data-answer="3" placeholder="?" type="number"/></td>
+</tr>
+<tr data-figure="2">
+<td>2</td>
+<td><span class="auto-fill">2</span></td>
+<td><input class="table-input" data-answer="5" placeholder="?" type="number"/></td>
+<td><input class="table-input" data-answer="4" placeholder="?" type="number"/></td>
+</tr>
+<tr data-figure="3">
+<td>3</td>
+<td><span class="auto-fill">3</span></td>
+<td><input class="table-input" data-answer="7" placeholder="?" type="number"/></td>
+<td><input class="table-input" data-answer="5" placeholder="?" type="number"/></td>
+</tr>
+<tr data-figure="4">
+<td>4</td>
+<td><span class="auto-fill">4</span></td>
+<td><input class="table-input" data-answer="9" placeholder="?" type="number"/></td>
+<td><input class="table-input" data-answer="6" placeholder="?" type="number"/></td>
+</tr>
+<tr data-figure="5">
+<td>5</td>
+<td><span class="auto-fill">5</span></td>
+<td><input class="table-input" data-answer="11" placeholder="?" type="number"/></td>
+<td><input class="table-input" data-answer="7" placeholder="?" type="number"/></td>
+</tr>
+</tbody>
+</table>
+<div class="pattern-analysis">
+<h4>Análisis del patrón:</h4>
+<div class="formula-section">
+<p><strong>Fórmula para palillos:</strong> <span id="sticksFormula">P = 2n + 1</span></p>
+<p><strong>Fórmula para vértices:</strong> <span id="verticesFormula">V = n + 2</span></p>
+<p class="formula-explanation">Donde <em>n</em> es el número de triángulos</p>
+</div>
+</div>
+<button class="check-btn" onclick="checkPatternTable()">
+<i class="fas fa-check"></i> Verificar Tabla
+                    </button>
+<div class="feedback" id="feedback2"></div>
+</div>
+</section>
+<!-- Problema 3: Balanzas equilibradas -->
+<section class="problem-section" id="problema3">
+<div class="problem-header">
+<h2><i class="fas fa-balance-scale"></i> Problema 3: Balanzas Equilibradas</h2>
+<p class="problem-description">
+                        Observa las balanzas equilibradas y determina cuántos tornillos se necesitan para equilibrar la tercera balanza.
+                    </p>
+</div>
+<div class="balance-container">
+<!-- Balanza 1 -->
+<div class="balance-item">
+<h4>Balanza 1 (Equilibrada)</h4>
+<div class="balance-visual">
+<svg height="150" viewbox="0 0 400 150" width="400">
+<!-- Base de la balanza -->
+<polygon fill="#34495e" points="200,120 180,140 220,140"></polygon>
+<line stroke="#34495e" stroke-width="4" x1="200" x2="200" y1="120" y2="80"></line>
+<!-- Brazo de la balanza -->
+<line stroke="#34495e" stroke-width="6" x1="100" x2="300" y1="80" y2="80"></line>
+<!-- Platos -->
+<ellipse cx="120" cy="80" fill="#ecf0f1" rx="40" ry="8" stroke="#bdc3c7" stroke-width="2"></ellipse>
+<ellipse cx="280" cy="80" fill="#ecf0f1" rx="40" ry="8" stroke="#bdc3c7" stroke-width="2"></ellipse>
+<!-- Herramientas lado izquierdo -->
+<g id="tools1">
+<!-- Llave inglesa -->
+<rect fill="#95a5a6" height="8" rx="2" width="25" x="90" y="65"></rect>
+<rect fill="#95a5a6" height="18" rx="2" width="8" x="110" y="60"></rect>
+<!-- Martillo -->
+<rect fill="#8b4513" height="6" width="20" x="125" y="68"></rect>
+<rect fill="#95a5a6" height="18" width="8" x="140" y="62"></rect>
+</g>
+<!-- Tornillos lado derecho -->
+<g id="screws1">
+<circle cx="260" cy="75" fill="#7f8c8d" r="3"></circle>
+<circle cx="270" cy="75" fill="#7f8c8d" r="3"></circle>
+<circle cx="280" cy="75" fill="#7f8c8d" r="3"></circle>
+<circle cx="290" cy="75" fill="#7f8c8d" r="3"></circle>
+<circle cx="300" cy="75" fill="#7f8c8d" r="3"></circle>
+<circle cx="265" cy="85" fill="#7f8c8d" r="3"></circle>
+<circle cx="275" cy="85" fill="#7f8c8d" r="3"></circle>
+<circle cx="285" cy="85" fill="#7f8c8d" r="3"></circle>
+<circle cx="295" cy="85" fill="#7f8c8d" r="3"></circle>
+</g>
+<!-- Indicador de equilibrio -->
+<circle cx="200" cy="80" fill="#27ae60" r="5"></circle>
+<text class="balance-status" x="210" y="85">✓ Equilibrada</text>
+</svg>
+</div>
+<p class="balance-equation">1 Llave + 1 Martillo = 9 Tornillos</p>
+</div>
+<!-- Balanza 2 -->
+<div class="balance-item">
+<h4>Balanza 2 (Equilibrada)</h4>
+<div class="balance-visual">
+<svg height="150" viewbox="0 0 400 150" width="400">
+<!-- Base de la balanza -->
+<polygon fill="#34495e" points="200,120 180,140 220,140"></polygon>
+<line stroke="#34495e" stroke-width="4" x1="200" x2="200" y1="120" y2="80"></line>
+<!-- Brazo de la balanza -->
+<line stroke="#34495e" stroke-width="6" x1="100" x2="300" y1="80" y2="80"></line>
+<!-- Platos -->
+<ellipse cx="120" cy="80" fill="#ecf0f1" rx="40" ry="8" stroke="#bdc3c7" stroke-width="2"></ellipse>
+<ellipse cx="280" cy="80" fill="#ecf0f1" rx="40" ry="8" stroke="#bdc3c7" stroke-width="2"></ellipse>
+<!-- 3 Martillos lado izquierdo -->
+<g id="tools2">
+<rect fill="#8b4513" height="6" width="15" x="95" y="68"></rect>
+<rect fill="#95a5a6" height="18" width="6" x="105" y="62"></rect>
+<rect fill="#8b4513" height="6" width="15" x="115" y="68"></rect>
+<rect fill="#95a5a6" height="18" width="6" x="125" y="62"></rect>
+<rect fill="#8b4513" height="6" width="15" x="135" y="68"></rect>
+<rect fill="#95a5a6" height="18" width="6" x="145" y="62"></rect>
+</g>
+<!-- Tornillos lado derecho -->
+<g id="screws2">
+<circle cx="250" cy="70" fill="#7f8c8d" r="3"></circle>
+<circle cx="260" cy="70" fill="#7f8c8d" r="3"></circle>
+<circle cx="270" cy="70" fill="#7f8c8d" r="3"></circle>
+<circle cx="280" cy="70" fill="#7f8c8d" r="3"></circle>
+<circle cx="290" cy="70" fill="#7f8c8d" r="3"></circle>
+<circle cx="300" cy="70" fill="#7f8c8d" r="3"></circle>
+<circle cx="310" cy="70" fill="#7f8c8d" r="3"></circle>
+<circle cx="255" cy="80" fill="#7f8c8d" r="3"></circle>
+<circle cx="265" cy="80" fill="#7f8c8d" r="3"></circle>
+<circle cx="275" cy="80" fill="#7f8c8d" r="3"></circle>
+<circle cx="285" cy="80" fill="#7f8c8d" r="3"></circle>
+<circle cx="295" cy="80" fill="#7f8c8d" r="3"></circle>
+<circle cx="305" cy="80" fill="#7f8c8d" r="3"></circle>
+<circle cx="260" cy="90" fill="#7f8c8d" r="3"></circle>
+<circle cx="270" cy="90" fill="#7f8c8d" r="3"></circle>
+<circle cx="280" cy="90" fill="#7f8c8d" r="3"></circle>
+<circle cx="290" cy="90" fill="#7f8c8d" r="3"></circle>
+<circle cx="300" cy="90" fill="#7f8c8d" r="3"></circle>
+</g>
+<!-- Indicador de equilibrio -->
+<circle cx="200" cy="80" fill="#27ae60" r="5"></circle>
+<text class="balance-status" x="210" y="85">✓ Equilibrada</text>
+</svg>
+</div>
+<p class="balance-equation">3 Martillos = 18 Tornillos</p>
+</div>
+<!-- Balanza 3 (Desequilibrada) -->
+<div class="balance-item">
+<h4>Balanza 3 (¿Cuántos tornillos faltan?)</h4>
+<div class="balance-visual">
+<svg height="150" viewbox="0 0 400 150" width="400">
+<!-- Base de la balanza -->
+<polygon fill="#34495e" points="200,120 180,140 220,140"></polygon>
+<line stroke="#34495e" stroke-width="4" x1="200" x2="200" y1="120" y2="70"></line>
+<!-- Brazo de la balanza (inclinado hacia la izquierda) -->
+<line stroke="#34495e" stroke-width="6" x1="100" x2="300" y1="70" y2="90"></line>
+<!-- Platos (inclinados) -->
+<ellipse cx="120" cy="70" fill="#ecf0f1" rx="40" ry="8" stroke="#bdc3c7" stroke-width="2"></ellipse>
+<ellipse cx="280" cy="90" fill="#ecf0f1" rx="40" ry="8" stroke="#bdc3c7" stroke-width="2"></ellipse>
+<!-- Herramientas lado izquierdo -->
+<g id="tools3">
+<!-- Llave inglesa -->
+<rect fill="#95a5a6" height="8" rx="2" width="25" x="90" y="55"></rect>
+<rect fill="#95a5a6" height="18" rx="2" width="8" x="110" y="50"></rect>
+<!-- Martillo -->
+<rect fill="#8b4513" height="6" width="20" x="125" y="58"></rect>
+<rect fill="#95a5a6" height="18" width="8" x="140" y="52"></rect>
+</g>
+<!-- Lado derecho vacío (donde van los tornillos) -->
+<g id="screws3">
+<!-- Espacio para tornillos -->
+<text class="missing-text" x="260" y="100">? tornillos</text>
+</g>
+<!-- Indicador de desequilibrio -->
+<circle cx="200" cy="80" fill="#e74c3c" r="5"></circle>
+<text class="balance-status" x="210" y="85">✗ Desequilibrada</text>
+</svg>
+</div>
+<div class="balance-solver">
+<h4>Resuelve paso a paso:</h4>
+<div class="step-by-step">
+<div class="step">
+<p><strong>Paso 1:</strong> De la Balanza 2, ¿cuánto vale 1 martillo?</p>
+<input id="hammer-value" placeholder="tornillos" type="number"/>
+<button class="mini-check" onclick="checkStep(1)">✓</button>
+<div class="mini-feedback" id="step1-feedback"></div>
+</div>
+<div class="step">
+<p><strong>Paso 2:</strong> De la Balanza 1, ¿cuánto vale 1 llave?</p>
+<input id="wrench-value" placeholder="tornillos" type="number"/>
+<button class="mini-check" onclick="checkStep(2)">✓</button>
+<div class="mini-feedback" id="step2-feedback"></div>
+</div>
+<div class="step">
+<p><strong>Paso 3:</strong> ¿Cuántos tornillos se necesitan en la Balanza 3?</p>
+<input id="final-answer" placeholder="tornillos" type="number"/>
+<button class="mini-check" onclick="checkStep(3)">✓</button>
+<div class="mini-feedback" id="step3-feedback"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="balance-summary">
+<h4>Resumen de ecuaciones:</h4>
+<div class="equations">
+<p>🔧 + 🔨 = 9 tornillos</p>
+<p>3 × 🔨 = 18 tornillos</p>
+<p>🔧 + 🔨 = ? tornillos</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<footer class="footer">
+<div class="container">
+<p>© 2024 Problemas de Razonamiento Algebraico - Educación Primaria</p>
+<p>Desarrollado para el aprendizaje interactivo de matemáticas</p>
+</div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
